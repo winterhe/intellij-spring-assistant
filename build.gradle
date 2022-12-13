@@ -1,6 +1,9 @@
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.parser.Parser
 
+// https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#usage
+// update gradle version
+// ./gradlew wrapper --gradle-version=VERSION
 buildscript {
     repositories {
         mavenCentral()
@@ -13,13 +16,15 @@ buildscript {
 plugins {
     id 'java'
     id 'idea'
-    id 'org.jetbrains.intellij' version '1.4.0'
+    // When targeting 2022.3+ IDE releases, using Gradle IntelliJ Plugin version 1.10.0 or higher is required.
+    id 'org.jetbrains.intellij' version '1.10.1'
 }
 
-group = 'dev.eltonsandre.intellij'
+group = 'space.wintersea.intellij'
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+// If targeting 2022.3+, Java 17 is required instead.
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
@@ -58,9 +63,12 @@ clean.doFirst {
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
+// https://www.jetbrains.com/intellij-repository/releases/?_ga=2.207512027.978002003.1670814090-1684912644.1661761560&_gl=1*13h4vl6*_ga*MTY4NDkxMjY0NC4xNjYxNzYxNTYw*_ga_9J976DJZ68*MTY3MDgyOTc1Ny4xMy4xLjE2NzA4MzA3NzkuMC4wLjA.
+// https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions
 intellij {
+    // IC: IntelliJ IDEA Community Edition
     type.set('IC')
-    version.set('2021.3.2')
+    version.set('2022.3')
     downloadSources.set(true)
     pluginName.set(project.name)
     plugins.set(['java', 'properties', 'yaml', 'maven', 'gradle'])
@@ -73,7 +81,8 @@ publishPlugin {
 }
 
 patchPluginXml {
-    sinceBuild.set('203')
+    // https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions
+    sinceBuild.set('223')
     pluginDescription.set(provider { readmeXmlAsHtml() })
     changeNotes.set(provider { changeLogAsHtml() })
 }
@@ -86,8 +95,8 @@ wrapper() {
 String readmeXmlAsHtml() {
     final String readmeContent = new File(rootProject.uri('README.md')).text
     // since these images needs to shown from within intellij, lest put absolute urls so that the images & changelog will be visible
-            .replaceAll("help\\.gif", "https://raw.githubusercontent.com/eltonsandre/intellij-spring-assistant/${version}/help.gif")
-            .replaceAll("CHANGELOG.md", "https://github.com/eltonsandre/intellij-spring-assistant/blob/${version}/CHANGELOG.md")
+            .replaceAll("help\\.gif", "https://raw.githubusercontent.com/winterhe/intellij-spring-assistant/${version}/help.gif")
+            .replaceAll("CHANGELOG.md", "https://github.com/winterhe/intellij-spring-assistant/blob/${version}/CHANGELOG.md")
 
     final var readmeDocument = Parser.builder().build().parse(readmeContent)
     HtmlRenderer.builder().build().render(readmeDocument)

@@ -1,23 +1,22 @@
-<idea-plugin url="https://github.com/eltonsandre/intellij-spring-assistant" require-restart="false">
+<idea-plugin url="https://github.com/winterhe/intellij-spring-assistant.git" require-restart="false">
 
-    <id>dev.eltonsandre.intellij.spring.assistant.plugin</id>
+    <id>space.wintersea.intellij.spring.assistant.plugin</id>
     <name>Spring Initializr and Assistant</name>
 
-    <vendor email="eltonsandre@gmail.com" url="https://github.com/eltonsandre">eltonsandre</vendor>
+    <vendor email="winter.he@outlook.com" url="https://github.com/winterhe">Winter He</vendor>
 
     <description>
         <![CDATA[
               <h3>Autocomplete wizard for configuration property with spring</h3>
               application.(properties/yaml)；
 
-              Fix and refactor: IC-2021.3.+
+              Ideal version support: 2022.2
           ]]>]
     </description>
     <change-notes>
         <![CDATA[
-        Fix and refactor:
-         - new feature - link properties
-         - test: IntelliJ IDEA 2021.3.2 (Community Edition) Build #IC-213.xx
+        Ideal version support:
+         - test: IntelliJ IDEA 2022.2.1 (Community Edition) Build #IC-222.xx
         ]]>]
     </change-notes>
 
