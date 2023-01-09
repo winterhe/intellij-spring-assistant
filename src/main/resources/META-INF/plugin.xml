@@ -10,13 +10,13 @@
               <h3>Autocomplete wizard for configuration property with spring</h3>
               application.(properties/yaml)；
 
-              Ideal version support: 2022.2
+              Ideal version support: 2022.1
           ]]>]
     </description>
     <change-notes>
         <![CDATA[
         Ideal version support:
-         - test: IntelliJ IDEA 2022.2.1 (Community Edition) Build #IC-222.xx
+         - test: IntelliJ IDEA 2022.2.4 (Community Edition) Build #IC-222.xx
         ]]>]
     </change-notes>
 

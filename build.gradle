@@ -82,7 +82,7 @@ publishPlugin {
 
 patchPluginXml {
     // https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions
-    sinceBuild.set('223')
+    sinceBuild.set('221')
     pluginDescription.set(provider { readmeXmlAsHtml() })
     changeNotes.set(provider { changeLogAsHtml() })
 }
